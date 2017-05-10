@@ -1,5 +1,8 @@
 {
   "parser": "babel-eslint",
+  "rules":{
+    "linebreak-style": ["error", "unix"] //windows : when using CRLR; unix : when using LR
+  },
   "env": {
     "browser": true,
     "node": true

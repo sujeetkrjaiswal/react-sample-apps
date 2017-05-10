@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
 export default {
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     resolve: {
         extensions: ['*', '.js', '.jsx', '.json']
     },

@@ -1,5 +1,5 @@
-import webpack from 'webpack';
-import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import webpack from 'webpack'; // eslint-disable-line import/no-extraneous-dependencies
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'; // eslint-disable-line import/no-extraneous-dependencies
 import config from '../config/webpack.config.prod';
 
 config.plugins.push(new BundleAnalyzerPlugin());

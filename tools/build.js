@@ -1,7 +1,7 @@
-/* eslint-disable no-console */
-import webpack from 'webpack';
+/* eslint-disable no-console*/
+import webpack from 'webpack'; // eslint-disable-line import/no-extraneous-dependencies
 import config from '../config/webpack.config.prod';
-import {chalkError, chalkSuccess, chalkWarning, chalkProcessing} from './chalkConfig';
+import { chalkError, chalkSuccess, chalkWarning, chalkProcessing } from './chalkConfig';
 
 process.env.NODE_ENV = 'production';
 
@@ -15,7 +15,7 @@ webpack(config).run((error, stats) => {
   const jsonStats = stats.toJson();
 
   if (jsonStats.hasErrors) {
-    return jsonStats.errors.map(error => console.log(chalkError(error)));
+    return jsonStats.errors.map(jsonStatsError => console.log(chalkError(jsonStatsError)));
   }
 
   if (jsonStats.hasWarnings) {
