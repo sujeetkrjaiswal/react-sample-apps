@@ -4,12 +4,14 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
 export default {
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     resolve: {
+        // root: path.resolve(__dirname, "../src"),
         extensions: ['*', '.js', '.jsx', '.json']
     },
     target: 'web',
     entry: [
+        'react-hot-loader/patch',
         'webpack-hot-middleware/client',
         './src/index'
     ],
@@ -25,7 +27,7 @@ export default {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
-                options:{
+                options: {
                     emitError: true,
                     emitWarning: true,
                     failOnWarning: false,
@@ -39,7 +41,7 @@ export default {
             },
             {
                 test: /(\.css|\.scss|\.sass)$/,
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: [

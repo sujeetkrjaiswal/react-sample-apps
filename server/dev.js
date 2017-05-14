@@ -1,3 +1,4 @@
+/* eslint-disable */
 import browserSync from 'browser-sync';
 import historyAPiFallback from 'connect-history-api-fallback';
 import webpack from 'webpack';
