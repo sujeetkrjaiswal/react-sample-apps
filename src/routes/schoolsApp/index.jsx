@@ -1,9 +1,11 @@
 import React from 'react';
+import SchoolList from './components/schoolList';
 
 const SchoolApp = () => (
-  <div>
-    <h2>SchoolApp : A Sub App with API Call using redux-thunk</h2>
-  </div>
+  <section>
+    <h1>School App Sample</h1>
+    <SchoolList />
+  </section>
 );
 
 export default SchoolApp;

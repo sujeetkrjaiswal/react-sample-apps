@@ -1,5 +1,5 @@
-import schools from './schools';
+import schoolsApp from './schools';
 
 export default {
-  schools,
+  schoolsApp,
 };
