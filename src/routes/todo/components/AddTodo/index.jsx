@@ -8,7 +8,7 @@ import { addTodo } from '../../actions';
 const AddTodoComponent = ({ dispatch }) => {
   let input;
   return (
-    <section>
+    <section className="p-t-b-10">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -19,14 +19,19 @@ const AddTodoComponent = ({ dispatch }) => {
           input.value = '';
         }}
       >
-        <input
-          ref={(node) => {
-            input = node;
-          }}
-        />
-        <button type="submit">
-          Add Todo
-        </button>
+        <div className="input-group">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="I want to do ..."
+            ref={(node) => {
+              input = node;
+            }}
+          />
+          <span className="input-group-btn">
+            <button className="btn btn-default" type="submit">Add Todo</button>
+          </span>
+        </div>
       </form>
     </section>
   );

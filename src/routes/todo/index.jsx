@@ -4,7 +4,7 @@ import AddTodo from './components/AddTodo';
 import Todos from './components/Todos';
 
 const TodoApp = () => (
-  <section>
+  <section className="container">
     <Header />
     <AddTodo />
     <Todos />

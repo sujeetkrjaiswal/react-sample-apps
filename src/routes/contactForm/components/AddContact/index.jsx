@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { addContact } from '../../actions';
 
+
 const AddContact = ({ dispatch }) => {
   let name;
   let email;
@@ -20,15 +21,28 @@ const AddContact = ({ dispatch }) => {
     }));
   };
   return (
-    <section>
-      <form onSubmit={onSubmit}>
-        <input ref={(node) => { name = node; }} type="text" placeholder="Name" required />
-        <input ref={(node) => { email = node; }} type="email" placeholder="Email" required />
-        <input ref={(node) => { address = node; }} type="text" placeholder="Address" required />
-        <input ref={(node) => { phone = node; }} type="number" placeholder="PhoneNo" required />
-        <button type="submit"> Add Contact </button>
-      </form>
-    </section>
+    <div className="panel panel-default">
+      <div className="panel-heading">
+        <h3 className="panel-title">Add Contact</h3>
+      </div>
+      <div className="panel-body">
+        <form onSubmit={onSubmit} className="form-inline">
+          <div className="form-group">
+            <input ref={(node) => { name = node; }} type="text" placeholder="Name" required className="form-control" />
+          </div>
+          <div className="form-group">
+            <input ref={(node) => { email = node; }} type="email" placeholder="Email" required className="form-control" />
+          </div>
+          <div className="form-group">
+            <input ref={(node) => { address = node; }} type="text" placeholder="Address" required className="form-control" />
+          </div>
+          <div className="form-group">
+            <input ref={(node) => { phone = node; }} type="number" placeholder="PhoneNo" required className="form-control" />
+          </div>
+          <button type="submit" className="btn btn-default"> Add Contact </button>
+        </form>
+      </div>
+    </div>
   );
 };
 

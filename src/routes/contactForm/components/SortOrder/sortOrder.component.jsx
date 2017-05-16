@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { CONTACT_SORT_NONE, CONTACT_SORT_ASC, CONTACT_SORT_DESC } from '../../actions/constants';
 
 const AscSym = () => (
-  <span> ^ </span>
+  <span className="glyphicon glyphicon-sort-by-attributes" />
 );
 const DescSym = () => (
-  <span> \/ </span>
+  <span className="glyphicon glyphicon-sort-by-attributes-alt" />
 );
 
 const OrderSym = ({ currSortOrder }) => {
@@ -25,11 +25,12 @@ OrderSym.propTypes = {
 
 const SortOrderComponent = ({ currSortOrder, nextSortOrder, children, onClick }) => (
   <button
+    className={`btn btn-block ${(currSortOrder === CONTACT_SORT_NONE ? 'btn-default' : 'btn-primary')}`}
     onClick={() => {
       onClick(nextSortOrder);
     }}
   >
-    {children}
+    {children} &nbsp;&nbsp;&nbsp;&nbsp;
     <OrderSym currSortOrder={currSortOrder} />
   </button>
 );

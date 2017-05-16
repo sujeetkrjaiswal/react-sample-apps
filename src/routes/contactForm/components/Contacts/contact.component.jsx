@@ -9,11 +9,12 @@ const Contact = ({ onDel, info }) => (
     <td>{info.address}</td>
     <td>
       <button
+        className="btn btn-default"
         onClick={() => {
           onDel(info.id);
         }}
       >
-        Del
+        <span className="glyphicon glyphicon-remove" />
       </button>
     </td>
   </tr>

@@ -2,12 +2,20 @@ import React from 'react';
 import Header from './components/Header';
 import AddContact from './components/AddContact';
 import Contacts from './components/Contacts';
+import ContactSearch from './components/contactSearch';
 
 const ContactApp = () => (
-  <section>
+  <section className="container">
     <Header />
     <AddContact />
-    <Contacts />
+    <div className="panel panel-default">
+      <div className="panel-heading">
+        <ContactSearch />
+      </div>
+      <div className="panel-body">
+        <Contacts />
+      </div>
+    </div>
   </section>
 );
 

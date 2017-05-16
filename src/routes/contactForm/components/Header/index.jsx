@@ -1,10 +1,8 @@
 import React from 'react';
-import ContactSearch from './search.container';
 
 const Header = () => (
   <section>
-    <h1>Contact Sub Application</h1>
-    <ContactSearch />
+    <h1 className="heading">Contact Sub Application</h1>
   </section>
 );
 

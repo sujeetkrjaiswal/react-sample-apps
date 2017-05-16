@@ -65,16 +65,12 @@
     "webpack-bundle-analyzer": "^2.6.0",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-md5-hash": "0.0.5"
+    "webpack-md5-hash": "0.0.5",
+    "url-loader": "^0.5.8"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "bootstrap": "^3.3.7",
-    "bootstrap-loader": "^2.1.0",
-    "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",
-    "css-loader": "^0.28.1",
-    "jquery": "^3.2.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -83,7 +79,6 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "resolve-url-loader": "^2.0.2",
-    "url-loader": "^0.5.8",
     "whatwg-fetch": "^2.0.3"
   }
 }
