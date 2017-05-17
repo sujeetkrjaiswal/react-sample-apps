@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchContactComponent = ({ query, search }) => {
+const SearchContactComponent = ({ query, search, placeholder }) => {
   let input;
   return (
     <section className="p-t-b-10">
@@ -16,7 +16,7 @@ const SearchContactComponent = ({ query, search }) => {
             type="text"
             required
             className="form-control"
-            placeholder="Search contacts ..."
+            placeholder={placeholder}
             value={query}
             ref={(node) => {
               input = node;
@@ -38,6 +38,7 @@ const SearchContactComponent = ({ query, search }) => {
 SearchContactComponent.propTypes = {
   search: PropTypes.func.isRequired,
   query: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
 
 export default SearchContactComponent;

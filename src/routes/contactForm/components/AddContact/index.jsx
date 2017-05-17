@@ -21,28 +21,32 @@ const AddContact = ({ dispatch }) => {
     }));
   };
   return (
-    <div className="panel panel-default">
-      <div className="panel-heading">
-        <h3 className="panel-title">Add Contact</h3>
+    <form onSubmit={onSubmit}>
+      <div className="panel panel-primary">
+        <div className="panel-heading">
+          <h3 className="panel-title">Add Contact</h3>
+        </div>
+        <div className="panel-body">
+          <div className="row">
+            <div className="col-md-3">
+              <input ref={(node) => { name = node; }} type="text" placeholder="Name" required className="form-control" />
+            </div>
+            <div className="col-md-3">
+              <input ref={(node) => { email = node; }} type="email" placeholder="Email" required className="form-control" />
+            </div>
+            <div className="col-md-3">
+              <input ref={(node) => { address = node; }} type="text" placeholder="Address" required className="form-control" />
+            </div>
+            <div className="col-md-3">
+              <input ref={(node) => { phone = node; }} type="number" placeholder="PhoneNo" required className="form-control" />
+            </div>
+          </div>
+        </div>
+        <div className="panel-footer clearfix">
+          <button type="submit" className="btn btn-default pull-right"> Add Contact </button>
+        </div>
       </div>
-      <div className="panel-body">
-        <form onSubmit={onSubmit} className="form-inline">
-          <div className="form-group">
-            <input ref={(node) => { name = node; }} type="text" placeholder="Name" required className="form-control" />
-          </div>
-          <div className="form-group">
-            <input ref={(node) => { email = node; }} type="email" placeholder="Email" required className="form-control" />
-          </div>
-          <div className="form-group">
-            <input ref={(node) => { address = node; }} type="text" placeholder="Address" required className="form-control" />
-          </div>
-          <div className="form-group">
-            <input ref={(node) => { phone = node; }} type="number" placeholder="PhoneNo" required className="form-control" />
-          </div>
-          <button type="submit" className="btn btn-default"> Add Contact </button>
-        </form>
-      </div>
-    </div>
+    </form>
   );
 };
 

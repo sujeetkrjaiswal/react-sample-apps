@@ -1,4 +1,4 @@
-import { ACTION_FETCH_SCHOOL, FETCH_FAILED, FETCH_SUCCESS, FETCH_PENDING, FETCH_NOSTART } from '../action/constants';
+import { ACTION_SCHOOL_SEARCH, ACTION_FETCH_SCHOOL, FETCH_FAILED, FETCH_SUCCESS, FETCH_PENDING, FETCH_NOSTART } from '../actions/constants';
 
 const schoolFetchReducer = (state = [], action = FETCH_NOSTART) => {
   switch (action) {
@@ -17,16 +17,23 @@ const schoolFetchReducer = (state = [], action = FETCH_NOSTART) => {
 
 const schoolsReducer = (state = {
   status: FETCH_NOSTART,
+  query: '',
   schools: [],
 }, action) => {
   switch (action.type) {
     case ACTION_FETCH_SCHOOL:
       return {
+        ...state,
         status: action.status,
         schools: [
           ...state.schools,
           ...schoolFetchReducer(action.schools),
         ],
+      };
+    case ACTION_SCHOOL_SEARCH:
+      return {
+        ...state,
+        query: action.query,
       };
     default:
       return state;

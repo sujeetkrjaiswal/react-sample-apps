@@ -9,7 +9,7 @@ const Contact = ({ onDel, info }) => (
     <td>{info.address}</td>
     <td>
       <button
-        className="btn btn-default"
+        className="btn btn-danger"
         onClick={() => {
           onDel(info.id);
         }}

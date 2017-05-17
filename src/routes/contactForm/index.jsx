@@ -8,7 +8,7 @@ const ContactApp = () => (
   <section className="container">
     <Header />
     <AddContact />
-    <div className="panel panel-default">
+    <div className="panel panel-primary">
       <div className="panel-heading">
         <ContactSearch />
       </div>

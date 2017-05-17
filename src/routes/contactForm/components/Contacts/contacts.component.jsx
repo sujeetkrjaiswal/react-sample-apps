@@ -5,7 +5,7 @@ import SortOrder from '../SortOrder';
 import { CONTACT_NAME, CONTACT_EMAIL, CONTACT_ADDRESS, CONTACT_PHONE } from '../../actions/constants';
 
 const Contacts = ({ contacts, onContactDel }) => (
-  <table className="table table-hover">
+  <table className="table table-hover table-condensed">
     <thead>
       <tr>
         <th className="nopadd"><SortOrder sortField={CONTACT_NAME}>Name</SortOrder></th>

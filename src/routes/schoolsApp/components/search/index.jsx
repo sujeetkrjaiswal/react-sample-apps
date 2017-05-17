@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { searchContact } from '../../actions';
-import SearchContactComponent from './search.component';
+import SearchContactComponent from '../../../contactForm/components/contactSearch/search.component';
 
 const mapStateToProps = state => ({
-  query: state.contactsSearch,
-  placeholder: 'Search in contacts by name, address, email or phone',
+  query: state.schoolsApp.query,
 });
 
 const mapDispatchToProps = dispatch => ({

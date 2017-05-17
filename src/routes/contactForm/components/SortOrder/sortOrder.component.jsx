@@ -25,7 +25,7 @@ OrderSym.propTypes = {
 
 const SortOrderComponent = ({ currSortOrder, nextSortOrder, children, onClick }) => (
   <button
-    className={`btn btn-block ${(currSortOrder === CONTACT_SORT_NONE ? 'btn-default' : 'btn-primary')}`}
+    className={`btn btn-block ${(currSortOrder === CONTACT_SORT_NONE ? 'btn-default' : 'btn-info')}`}
     onClick={() => {
       onClick(nextSortOrder);
     }}

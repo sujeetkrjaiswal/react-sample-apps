@@ -1,4 +1,11 @@
 $font-mono: monospace;
+.clearfix{
+  ::before, ::after {
+    display: block;
+    clear:both;
+    content: ' ';
+  }
+}
 .heading{
   font-family: $font-mono;
   border-bottom: 1px solid #333;
