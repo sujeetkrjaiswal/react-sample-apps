@@ -12,9 +12,11 @@ browserSync({
     port: 4001
   },
   server: {
+    routes: {
+        "/react-starter/": "dist",
+    },
     baseDir: 'dist'
   },
-
   files: [
     'src/*.html'
   ],
