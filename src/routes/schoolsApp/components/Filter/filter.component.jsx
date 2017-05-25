@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Filter = ({ active, onClick, children }) => (
   <button
-    className={`btn ${(active ? 'btn-info' : 'btn-default')}`}
+    className={`btn btn-block ${(active ? 'btn-info' : 'btn-default')}`}
     onClick={onClick}
     type="button"
   >

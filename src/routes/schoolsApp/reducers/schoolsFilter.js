@@ -1,56 +1,74 @@
-import { ACTION_FILTER_TOGGLE } from '../actions/constants';
+import {
+  ACTION_FILTER_TOGGLE,
+} from '../actions/constants';
 
-function toggleFilter(filters = [], key, name, status) {
-  const hasKey = filters.some(u => u.key === key);
-  let toReturn = [];
-  if (hasKey && status) {
-    toReturn = filters.map((u) => {
-      if (u.key === key) {
-        return {
-          key,
-          options: u.options.filter(optionName => (
-            optionName !== name
-          )),
-        };
-      }
-      return u;
-    });
-  } else if (hasKey && !status) {
-    toReturn = filters.map((u) => {
-      if (u.key === key) {
+function getNextState(state = [], key, name, status) {
+  const hasKey = state.some(u => (
+    u.key === key
+  ));
+
+  if (hasKey) {
+    return state.map((filterObj) => {
+      if (filterObj.key === key) {
+        const hasName = filterObj.options.some(option => option.name === name);
+        if (hasName) {
+          return {
+            key,
+            options: filterObj.options.map((option) => {
+              if (option.name === name) {
+                return { name, status };
+              }
+              return option;
+            }),
+          };
+        }
         return {
           key,
           options: [
-            ...u.options,
-            name,
+            ...filterObj.options,
+            { name, status },
           ],
         };
       }
-      return u;
+      return filterObj;
     });
-  } else if (!hasKey && status) {
-    toReturn = [...filters];
-  } else if (!hasKey && !status) {
-    toReturn = [
-      ...filters,
-      {
-        key,
-        options: [name],
-      },
-    ];
   }
-  return toReturn.filter(u => u.options.length > 0);
+  return [
+    ...state,
+    {
+      key,
+      options: [
+        { name, status },
+      ],
+    },
+  ];
 }
-// key: PropTypes.string.isRequired,
-// name: PropTypes.string.isRequired,
-// status: PropTypes.bool.isRequired,
-const schoolsFilterReducer = (state = [], action) => {
+
+/**
+ *
+ * @param {*} state :: {
+ *   key:
+ *   options: [
+ *    {value: '', status:'true'}
+ *   ]
+ * }
+ * @param {*} action
+ */
+export default function (state = [], action = {
+  type: ACTION_FILTER_TOGGLE,
+  filterKey: '',
+  filterValue: '',
+  filterStatus: false,
+}) {
   switch (action.type) {
     case ACTION_FILTER_TOGGLE:
-      return toggleFilter(state, action.key, action.name, action.status);
+      return getNextState(
+        state,
+        action.filterKey,
+        action.filterValue,
+        action.filterStatus,
+      );
     default:
       return state;
   }
-};
-
-export default schoolsFilterReducer;
+}

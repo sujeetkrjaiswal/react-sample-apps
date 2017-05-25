@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const About = () => (
   <div className="jumbotron">
@@ -7,7 +6,9 @@ const About = () => (
       <h1 className="heading">Sujeet Kr. Jaiswal</h1>
       <p>...</p>
       <p>
-        <Link className="btn btn-primary btn-lg" to="http://sujeetjaiswal.com/" target="_blank"> Visit My Personal Website</Link>
+        <a className="btn btn-primary btn-lg" href="http://sujeetjaiswal.com/" target="_blank" rel="external noopener noreferrer">
+          Visit My Personal Website
+        </a>
       </p>
     </div>
   </div>

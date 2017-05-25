@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FETCH_NOSTART, FETCH_PENDING, FETCH_SUCCESS, FETCH_FAILED } from '../../actions/constants';
+import {
+  ACTION_FETCH_STATUS_NOSTART,
+  ACTION_FETCH_STATUS_PENDING,
+  ACTION_FETCH_STATUS_SUCCESS,
+  ACTION_FETCH_STATUS_FAILED,
+} from '../../actions/constants';
 import FetchPending from '../FetchPending';
 import FetchError from '../FetchError';
 import Schools from '../Schools';
 import Filters from '../Filter';
+import SchoolSearch from '../search';
 
 class SchoolsComponent extends Component {
 
   componentDidMount() {
+    console.log('props', this.props);
     if (this.props.schools.length === 0) {
       this.fetchData();
     }
@@ -18,21 +25,28 @@ class SchoolsComponent extends Component {
   }
   render() {
     switch (this.props.status) {
-      case FETCH_NOSTART:
+      case ACTION_FETCH_STATUS_NOSTART:
         return null;
-      case FETCH_PENDING:
+      case ACTION_FETCH_STATUS_PENDING:
         return <FetchPending />;
-      case FETCH_FAILED:
+      case ACTION_FETCH_STATUS_FAILED:
         return <FetchError />;
-      case FETCH_SUCCESS:
+      case ACTION_FETCH_STATUS_SUCCESS:
         return (
-          <section>
-            <Filters schools={this.props.schools} keys={['category', 'gender', 'medium_of_inst']} />
-            <Schools schools={this.props.schools} />
-          </section>
+          <div className="row">
+            <div className="col-md-3">
+              <Filters filters={this.props.filters} />
+            </div>
+            <div className="col-md-9">
+              <SchoolSearch placeholder="Seach schools by name, address, area or pincode" />
+              <Schools schools={this.props.schools} />
+            </div>
+          </div>
         );
       default:
-        return null;
+        return (
+          <h1>Default</h1>
+        );
     }
   }
 }
@@ -59,6 +73,17 @@ SchoolsComponent.propTypes = {
       identification2: PropTypes.string.isRequired,
       busroutes: PropTypes.string.isRequired,
       latlong: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+  filters: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      options: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          status: PropTypes.bool.isRequired,
+        }).isRequired,
+      ).isRequired,
     }).isRequired,
   ).isRequired,
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Home = () => (
   <div className="jumbotron">
@@ -14,9 +13,9 @@ const Home = () => (
         inheriently have multiple sub-project or sub-applications.
       </p>
       <p>
-        <Link className="btn btn-primary btn-lg" to="https://github.com/sujeetkrjaiswal/react-starter" target="_blank">
+        <a className="btn btn-primary btn-lg" href="https://github.com/sujeetkrjaiswal/react-starter" target="_blank" rel="external noopener noreferrer">
           Visit Github Repository
-        </Link>
+        </a>
       </p>
     </div>
   </div>

@@ -3,24 +3,29 @@ import PropTypes from 'prop-types';
 import Filter from './filter.component';
 
 const Filters = ({ filters, onClick }) => (
-  <div className="btn-group">
+  <section>
     {filters.map(u => (
-      <section key={`filter-section-${u.key}`}>
-        <span>{u.key}</span>
-        {u.options.map(o => (
-          <Filter
-            active={o.status}
-            key={`${u.key}-${o.name}`}
-            onClick={() => {
-              onClick(u.key, o.name, o.status);
-            }}
-          >
-            {o.name}
-          </Filter>
-        ))}
+      <section
+        className="panel panel-default"
+        key={`filter-section-${u.key}`}
+      >
+        <div className="panel-heading">{u.key}</div>
+        <div className="panel-body">
+          {u.options.map(o => (
+            <Filter
+              active={o.status}
+              key={`${u.key}-${o.name}`}
+              onClick={() => {
+                onClick(u.key, o.name, !o.status);
+              }}
+            >
+              {o.name}
+            </Filter>
+          ))}
+        </div>
       </section>
     ))}
-  </div>
+  </section>
 );
 
 Filters.propTypes = {

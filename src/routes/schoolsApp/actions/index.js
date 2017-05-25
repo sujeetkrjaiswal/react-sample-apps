@@ -1,11 +1,18 @@
 import schoolListGetAPI from './schoolsApi';
-import { ACTION_FILTER_TOGGLE, ACTION_SCHOOL_SEARCH, ACTION_FETCH_SCHOOL, FETCH_NOSTART, FETCH_FAILED, FETCH_PENDING, FETCH_SUCCESS } from './constants';
+import {
+  ACTION_FETCH_STATUS_NOSTART,
+  ACTION_FETCH_STATUS_PENDING,
+  ACTION_FETCH_STATUS_SUCCESS,
+  ACTION_FETCH_STATUS_FAILED,
+  ACTION_FILTER_TOGGLE,
+  ACTION_SCHOOL_SEARCH,
+} from './constants';
 
-export const toggleFilter = (key, name, status) => ({
+export const toggleFilter = (filterKey, filterValue, filterStatus) => ({
   type: ACTION_FILTER_TOGGLE,
-  key,
-  name,
-  status,
+  filterKey,
+  filterValue,
+  filterStatus,
 });
 
 export const searchContact = (query => ({
@@ -13,20 +20,20 @@ export const searchContact = (query => ({
   query,
 }));
 
-export const fetchingStatus = (status = FETCH_NOSTART, schools = []) => ({
-  type: ACTION_FETCH_SCHOOL,
-  status,
+export const fetchingStatus = (type = ACTION_FETCH_STATUS_NOSTART, schools = []) => ({
+  type,
   schools,
 });
+
 export const addSchoolsFromAPI = () => (
   (dispatch) => {
-    dispatch(fetchingStatus(FETCH_PENDING));
+    dispatch(fetchingStatus(ACTION_FETCH_STATUS_PENDING));
     schoolListGetAPI().then(
       (schools) => {
-        dispatch(fetchingStatus(FETCH_SUCCESS, schools));
+        dispatch(fetchingStatus(ACTION_FETCH_STATUS_SUCCESS, schools));
       },
       () => {
-        dispatch(fetchingStatus(FETCH_FAILED));
+        dispatch(fetchingStatus(ACTION_FETCH_STATUS_FAILED));
       },
     );
   }
