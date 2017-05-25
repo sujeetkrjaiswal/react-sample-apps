@@ -1,16 +1,22 @@
-import { SET_ORDER_FILTER, CONTACT_SORT_NONE, CONTACT_NAME } from '../actions/constants';
+import {
+  APP_KEY_SORT_ORDER,
+  APP_KEY_SORT_FIELD,
+  ACTION_SET_ORDER_FILTER,
+  CONTACT_SORT_NONE,
+  CONTACT_NAME,
+} from '../actions/constants';
 
 const initialState = {
-  sortOrder: CONTACT_SORT_NONE,
-  sortField: CONTACT_NAME,
+  [APP_KEY_SORT_ORDER]: CONTACT_SORT_NONE,
+  [APP_KEY_SORT_FIELD]: CONTACT_NAME,
 };
 
 const contactOrder = (state = initialState, action) => {
   switch (action.type) {
-    case SET_ORDER_FILTER:
+    case ACTION_SET_ORDER_FILTER:
       return {
-        sortOrder: action.sortOrder,
-        sortField: action.sortField,
+        [APP_KEY_SORT_ORDER]: action[APP_KEY_SORT_ORDER],
+        [APP_KEY_SORT_FIELD]: action[APP_KEY_SORT_FIELD],
       };
     default:
       return state;

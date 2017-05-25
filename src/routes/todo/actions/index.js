@@ -1,16 +1,16 @@
-import { SET_VISIBILITY_FILTER, ADD_TODO, TOGGLE_TODO } from './constants';
+import { ACTION_SET_VISIBILITY_FILTER, ACTION_ADD_TODO, ACTION_TOGGLE_TODO } from './constants';
 
 export const setVisibilityFilter = (filter => ({
-  type: SET_VISIBILITY_FILTER,
+  type: ACTION_SET_VISIBILITY_FILTER,
   filter,
 }));
 
 export const addTodo = (text => ({
-  type: ADD_TODO,
+  type: ACTION_ADD_TODO,
   text,
 }));
 
 export const toggleTodo = (id => ({
-  type: TOGGLE_TODO,
+  type: ACTION_TOGGLE_TODO,
   id,
 }));

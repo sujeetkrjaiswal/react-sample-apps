@@ -1,14 +1,14 @@
-import { ADD_TODO, TOGGLE_TODO } from '../actions/constants';
+import { ACTION_ADD_TODO, ACTION_TOGGLE_TODO } from '../actions/constants';
 
 const todoReducer = (state = {}, action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case ACTION_ADD_TODO:
       return {
         id: state.id,
         text: action.text,
         completed: false,
       };
-    case TOGGLE_TODO:
+    case ACTION_TOGGLE_TODO:
       if (state.id !== action.id) {
         return state;
       }
@@ -23,7 +23,7 @@ const todoReducer = (state = {}, action) => {
 
 const todos = (state = [], action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case ACTION_ADD_TODO:
       return [
         ...state,
         todoReducer({
@@ -32,7 +32,7 @@ const todos = (state = [], action) => {
           ), -1) + 1,
         }, action),
       ];
-    case TOGGLE_TODO:
+    case ACTION_TOGGLE_TODO:
       return state.map(t => todoReducer(t, action));
     default:
       return state;

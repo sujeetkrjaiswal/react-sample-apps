@@ -1,8 +1,16 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-// import { SET_ORDER_FILTER, SET_SEARCH_FILTER } from '../../actions/constants';
 import { deleteContact } from '../../actions';
-import { CONTACT_SORT_ASC, CONTACT_SORT_NONE } from '../../actions/constants';
+import {
+  APP_KEY_STORE,
+  APP_KEY_CONTACTS,
+  APP_KEY_QUERY,
+  APP_KEY_SORT,
+  APP_KEY_SORT_ORDER,
+  APP_KEY_SORT_FIELD,
+  CONTACT_SORT_ASC,
+  CONTACT_SORT_NONE,
+} from '../../actions/constants';
 import ContactsComponent from './contacts.component';
 
 function searchFilter(contacts, query) {
@@ -37,11 +45,17 @@ function order(contacts, sortField, sortOrder) {
 }
 
 const getVisibleContacts = (contacts, query, sortObject) => (
-  order(searchFilter(contacts, query), sortObject.sortField, sortObject.sortOrder)
+  order(
+    searchFilter(contacts, query),
+    sortObject[APP_KEY_SORT_FIELD],
+    sortObject[APP_KEY_SORT_ORDER])
 );
 
 const mapStateToProps = state => ({
-  contacts: getVisibleContacts(state.contacts, state.contactsSearch, state.contactsOrder),
+  contacts: getVisibleContacts(
+    state[APP_KEY_STORE][APP_KEY_CONTACTS],
+    state[APP_KEY_STORE][APP_KEY_QUERY],
+    state[APP_KEY_STORE][APP_KEY_SORT]),
 });
 
 const mapDispatchToProps = dispath => ({

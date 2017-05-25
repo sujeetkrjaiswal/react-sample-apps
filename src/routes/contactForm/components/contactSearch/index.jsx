@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { searchContact } from '../../actions';
 import SearchContactComponent from './search.component';
+import { searchContact } from '../../actions';
+import {
+  APP_KEY_STORE,
+  APP_KEY_QUERY,
+} from '../../actions/constants';
 
 const mapStateToProps = state => ({
-  query: state.contactsSearch,
+  query: state[APP_KEY_STORE][APP_KEY_QUERY],
   placeholder: 'Search in contacts by name, address, email or phone',
 });
 
